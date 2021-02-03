@@ -15,6 +15,10 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+html {
+  font-size: 93.75%; /* 15px */
+}
+
 .screen-reader-only {
   /* it will only be "visible" to screen readers, but won't be displayed on the screen to the end user */
   position: absolute;
@@ -112,9 +116,12 @@ header {
 
 /* Table ==================== */
 #data-table {
+  display: block;
   width: 100%;
   border-spacing: 0 0.5rem;
   color: #969CB3;
+
+  overflow-x: auto;
 }
 
 table thead tr th:first-child,
@@ -165,4 +172,22 @@ footer {
   padding: 4rem 0 2rem;
   color: var(--dark-blue);
   opacity: 0.6;
+}
+
+
+
+/* Responsive ==================== */
+@media (min-width: 800px) {
+  /* 800 or greater */
+
+  html {
+    font-size: 87.5%;
+  }
+
+  #balance {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
 }
