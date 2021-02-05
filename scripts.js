@@ -7,26 +7,25 @@ const Modal = {
   }
 }
 
-const transactions = [
-  {
-    description: 'Luz',
-    amount: -50000, // not using commas to split the cents
-    date: '30/01/2021',
-  },
-  {
-    description: 'Criação website',
-    amount: 500000, // not using commas to split the cents
-    date: '30/01/2021',
-  },
-  {
-    description: 'Internet',
-    amount: 20000, // not using commas to split the cents
-    date: '30/01/2021',
-  },
-]
 
 const Transaction = {
-  all: transactions,
+  all: [
+    {
+      description: 'Luz',
+      amount: -50000, // not using commas to split the cents
+      date: '30/01/2021',
+    },
+    {
+      description: 'Criação website',
+      amount: 500000, // not using commas to split the cents
+      date: '30/01/2021',
+    },
+    {
+      description: 'Internet',
+      amount: 20000, // not using commas to split the cents
+      date: '30/01/2021',
+    },
+  ],
 
   add(transaction) {
     this.all.push(transaction)
