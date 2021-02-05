@@ -9,19 +9,16 @@ const Modal = {
 
 const transactions = [
   {
-    id: 1,
     description: 'Luz',
     amount: -50000, // not using commas to split the cents
     date: '30/01/2021',
   },
   {
-    id: 2,
     description: 'Criação website',
     amount: 500000, // not using commas to split the cents
     date: '30/01/2021',
   },
   {
-    id: 3,
     description: 'Internet',
     amount: 20000, // not using commas to split the cents
     date: '30/01/2021',
@@ -33,6 +30,12 @@ const Transaction = {
 
   add(transaction) {
     this.all.push(transaction)
+
+    App.reload()
+  },
+
+  remove(index) {
+    this.all.splice(index, 1)
 
     App.reload()
   },
@@ -86,7 +89,7 @@ const DOM = {
       <td class="${CSSclass}">${amount}</td>
       <td class="date">${transaction.date}</td>
       <td>
-        <img src="./assets/plus.svg" alt="Adicionar transação">
+        <img src="./assets/minus.svg" alt="Remover transação">
       </td>
     `
 
