@@ -126,9 +126,75 @@ const Utils = {
     })
 
     return signal + value
+  },
+
+  formatAmount(value) {
+    value = value.replace(/\,\./g, "") 
+    return Number(value) * 100
+  },
+
+  formatDate(date) {
+    const [year, month, day] = date.split('-')
+    return `${day}/${month}/${year}`
   }
 }
 
+const Form = {
+  description: document.querySelector('input#description'),
+  amount: document.querySelector('input#amount'),
+  date: document.querySelector('input#date'),
+
+  getValues() {
+    return {
+      description: this.description.value,
+      amount: this.amount.value,
+      date: this.date.value,
+    }
+  },
+
+  validateFields() {
+    const { description, amount, date } = this.getValues()
+
+    if(description.trim() === '' || amount.trim() === '' || date.trim() === '') {
+      throw new Error('Por favor, preencha todos os campos')
+    }
+  },
+
+  formatValues() {
+    let { description, amount, date } = this.getValues()
+
+    amount = Utils.formatAmount(amount)
+    date = Utils.formatDate(date)
+
+    return {
+      description,
+      amount,
+      date,
+    }
+  },
+
+  clearFields() {
+    this.description.value = ''
+    this.amount.value = ''
+    this.date.value = ''
+  },
+
+  submit(event) {
+    event.preventDefault()
+
+    try {
+      this.validateFields()
+      const transaction = this.formatValues()
+      Transaction.add(transaction) // when we add a transaction we already perform a reload
+      this.clearFields()
+
+      Modal.toggle()
+    } catch (error) {
+      alert(error.message)
+    }
+
+  }
+}
 
 const App = {
   init() {
@@ -146,10 +212,3 @@ const App = {
 }
 
 App.init()
-
-// Transaction.add({
-//   id: 4,
-//   description: '123123',
-//   amount: -500000, // not using commas to split the cents
-//   date: '30/01/2021',
-// })
