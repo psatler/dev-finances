@@ -29,10 +29,18 @@ const transactions = [
 ]
 
 const Transaction = {
+  all: transactions,
+
+  add(transaction) {
+    this.all.push(transaction)
+
+    App.reload()
+  },
+
   incomes() {
     let income = 0
 
-    transactions.forEach(transaction => {
+    this.all.forEach(transaction => {
       if (transaction.amount > 0) {
         income += transaction.amount
       }
@@ -40,10 +48,11 @@ const Transaction = {
 
     return income
   },
+
   expenses() {
     let expense = 0
 
-    transactions.forEach(transaction => {
+    this.all.forEach(transaction => {
       if (transaction.amount < 0) {
         expense += transaction.amount
       }
@@ -51,6 +60,7 @@ const Transaction = {
 
     return expense
   },
+
   total() {
     return this.incomes() + this.expenses()
   },
@@ -65,6 +75,7 @@ const DOM = {
 
     this.transactionsContainer.appendChild(tr)
   },
+
   innerHTMLTransaction(transaction) {
     const CSSclass = transaction.amount > 0 ? 'income' : 'expense'
 
@@ -81,6 +92,7 @@ const DOM = {
 
     return html
   },
+
   updateBalance() {
     document
         .getElementById('incomeDisplay')
@@ -91,6 +103,11 @@ const DOM = {
     document
         .getElementById('totalDisplay')
         .innerHTML = Utils.formatCurrency(Transaction.total())
+  },
+
+  clearTransactons() {
+    // erase the DOM (tbody) before reloading the application
+    this.transactionsContainer.innerHTML = ''
   },
 }
 
@@ -110,8 +127,27 @@ const Utils = {
   }
 }
 
-transactions.forEach(function(transaction) {
-  DOM.addTransaction(transaction)
-})
 
-DOM.updateBalance()
+const App = {
+  init() {
+    
+    Transaction.all.forEach(transaction => DOM.addTransaction(transaction))
+    
+    DOM.updateBalance()
+
+  },
+
+  reload() {
+    DOM.clearTransactons()
+    this.init()
+  },
+}
+
+App.init()
+
+// Transaction.add({
+//   id: 4,
+//   description: '123123',
+//   amount: -500000, // not using commas to split the cents
+//   date: '30/01/2021',
+// })
