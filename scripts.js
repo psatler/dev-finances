@@ -7,25 +7,18 @@ const Modal = {
   }
 }
 
+const AppStorage = {
+  get() {
+    return JSON.parse(localStorage.getItem('dev.finances:transactions')) || []
+  },
+
+  set(transactions) {
+    localStorage.setItem('dev.finances:transactions', JSON.stringify(transactions))
+  },
+}
 
 const Transaction = {
-  all: [
-    {
-      description: 'Luz',
-      amount: -50000, // not using commas to split the cents
-      date: '30/01/2021',
-    },
-    {
-      description: 'Criação website',
-      amount: 500000, // not using commas to split the cents
-      date: '30/01/2021',
-    },
-    {
-      description: 'Internet',
-      amount: 20000, // not using commas to split the cents
-      date: '30/01/2021',
-    },
-  ],
+  all: AppStorage.get(),
 
   add(transaction) {
     this.all.push(transaction)
@@ -204,6 +197,7 @@ const App = {
     
     DOM.updateBalance()
 
+    AppStorage.set(Transaction.all)
   },
 
   reload() {
