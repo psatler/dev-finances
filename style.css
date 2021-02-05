@@ -179,6 +179,10 @@ table tbody tr td:last-child {
   border-radius: 0 0.25rem 0.25rem 0;
 }
 
+table tbody tr td:last-child img:hover {
+  cursor: pointer;
+}
+
 table thead th {
   background: white;
   font-weight: normal;
