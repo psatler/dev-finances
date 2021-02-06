@@ -27,9 +27,12 @@ const Transaction = {
   },
 
   remove(index) {
+    const item = this.all[index].description
     this.all.splice(index, 1)
 
     App.reload()
+
+    Toast.show(`Item ${item} removido`, 'normal')
   },
 
   incomes() {
@@ -182,9 +185,12 @@ const Form = {
       Transaction.add(transaction) // when we add a transaction we already perform a reload
       this.clearFields()
 
+      Toast.show(`Item ${transaction.description} adicionado`, 'success')
+
       Modal.toggle()
     } catch (error) {
-      alert(error.message)
+      // alert(error.message)
+      Toast.show(error.message, 'error')
     }
 
   }

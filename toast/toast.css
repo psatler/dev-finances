@@ -1,0 +1,51 @@
+.toast {
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+
+  /* the four following properties below center the toast */
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 400px;
+
+  padding: 6px;
+  /* background: #cccccc; */
+  /* color: #333333; */
+
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+  visibility: hidden;
+  opacity: 0;
+
+  /* setting how long will take to the properties below to change */
+  transition: opacity 0.2s, top 0.2s, visibility 0.2s;
+}
+
+.toast__visible {
+  top: 20px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.toast__success {
+  background: #00C02B;
+  border-color: #009D23;
+  color: white;
+}
+
+.toast__error {
+  background: #e92929;
+  border-color: #BA0000;
+  color: white;
+}
+
+.toast__normal {
+  background: #cccccc;
+  color: #333333;
+}
