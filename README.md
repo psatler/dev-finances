@@ -15,3 +15,4 @@ The project is hosted on Vercel and can be found live at https://dev-finances.ps
 
 - Some HTML tags are set to be only visible for screen readers, so they are not displayed for the 
 regular user. To hide it without compromising the design, the CSS class `.screen-reader-only` was created. This can be found at the [style.css](style.css) file.
+- Meta tags were added via [metatags.io](https://metatags.io/)
