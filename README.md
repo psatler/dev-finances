@@ -19,4 +19,4 @@ regular user. To hide it without compromising the design, the CSS class `.screen
 
 #### Dark mode
 
-This was achieved by using two CSS filters: `invert` and `hue-rotate`. More pices of information can be found at [this link](https://dev.to/akhilarjun/one-line-dark-mode-using-css-24li) and also [this one](https://mwichary.medium.com/dark-theme-in-a-day-3518dde2955a).
+This was achieved by using two CSS filters: `invert` and `hue-rotate`. More pieces of information can be found at [this link](https://dev.to/akhilarjun/one-line-dark-mode-using-css-24li) and also [this one](https://mwichary.medium.com/dark-theme-in-a-day-3518dde2955a).
