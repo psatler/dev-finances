@@ -4,6 +4,10 @@
   --green: #49AA26;
   --light-green: #3dd705;
   --red: #e92929;
+
+  /* switch variables */
+  --distance-from-left: 4px;
+  --switch-size: 18px;
 }
 
 
@@ -20,6 +24,16 @@ body {
 
 html {
   font-size: 93.75%; /* 15px */
+
+  transition: color 300ms, background-color 300ms;
+}
+
+html[data-theme='dark-mode'] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html[data-theme='dark-mode'] img {
+  filter: invert(1) hue-rotate(180deg);
 }
 
 .screen-reader-only {
@@ -107,7 +121,16 @@ button:hover {
 header {
   background: #2D4A22;
   padding: 2rem 0 10rem;
-  text-align: center;
+  /* text-align: center; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+}
+
+header img {
+  margin-bottom: 10px;
 }
 
 #logo {

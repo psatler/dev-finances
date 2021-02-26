@@ -27,16 +27,30 @@
 
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./toast/toast.css">
+  <link rel="stylesheet" href="./themeSwitcher/themeSwitcher.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
   <script src="./scripts.js" defer></script>
   <script src="./toast/toast.js" defer></script>
+  <script src="./themeSwitcher/themeSwitcher.js" defer></script>
 </head>
 
 <body>
 
   <header>
     <img src="./assets/logo.svg" alt="Logo Dev Finances">
+
+    <div class="switch-container">
+      <div class="switch-text">
+        <span>Change</span>
+        <span>Theme</span>
+      </div>
+
+      <label class="switch" for="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <div class="slider round"></div>
+      </label>
+    </div>
   </header>
   <main class="container">
 
